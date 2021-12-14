@@ -1,10 +1,5 @@
 <?php
 include('lib/common.php');
-// written by GTusername1
-
-if($showQueries){
-  array_push($query_msg, "showQueries currently turned ON, to disable change to 'false' in lib/common.php");
-}
 
 //Note: known issue with _POST always empty using PHPStorm built-in web server: Use *AMP server instead
 if( $_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -19,7 +14,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($enteredPassword)) {
 			array_push($error_msg,  "Please enter a password.");
 	}
-	
+
     if ( !empty($enteredUsername) && !empty($enteredPassword) )   { 
 
         $query = "SELECT password FROM User WHERE username='$enteredUsername'";
@@ -52,9 +47,9 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
             //depends on if you are storing the hash $storedHash or plaintext $storedPassword 
             if (password_verify($enteredPassword, $storedHash) ) {
                 array_push($query_msg, "Password is Valid! ");
-                $_SESSION['username'] = $enteredUsername;
+                $_SESSION['username'] = strtolower($enteredUsername);
                 array_push($query_msg, "logging in... ");
-                header(REFRESH_TIME . 'url=view_profile.php');		//to view the password hashes and login success/failure
+                header(REFRESH_TIME . 'url=update_main_page.php');		//to view the password hashes and login success/failure
                 
             } else {
                 array_push($error_msg, "Login failed: " . $enteredUsername . NEWLINE);
@@ -69,45 +64,39 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <?php include("lib/header.php"); ?>
-<title>GTOnline Login</title>
+<title>Login Page</title>
 </head>
+<html>
 <body>
     <div id="main_container">
-        <!-- <div id="header">
+        <div id="header">
             <div class="logo">
-                <img src="img/gtonline_logo.png" style="opacity:0.5;background-color:E9E5E2;" border="0" alt="" title="GT Online Logo"/>
+            <img src="img/gtonline_logo.png" width = 100% style="opacity:0.5;background-color:E9E5E2;" border="0" alt="" title="GT Online Logo"/>
             </div>
-        </div> -->
-
+        </div>
         <div class="center_content">
             <div class="text_box">
 
                 <form action="login.php" method="post" enctype="multipart/form-data">
-                    <div class="title">GTOnline Login</div>
+                    <div class="title">Login</div>
                     <div class="login_form_row">
-                        <label class="login_label">username:</label>
+                        <label class="login_label">Username:</label>
                         <input type="text" name="username" value="" class="login_input"/>
                     </div>
                     <div class="login_form_row">
                         <label class="login_label">Password:</label>
                         <input type="password" name="password" value="" class="login_input"/>
-                    <!-- </div>
-                    <input type="image" src="img/login.gif" class="login"/>
-                    <form/> -->
-                </div>
+                    </div>
+                    <div>
+                        <a  href="login.php" style="float: right;"><button>LOG IN</button></a>
+                    </div>
+                <form/>
 
-                <?php include("lib/error.php"); ?>
-
-                <div class="clear"></div>
             </div>
-   
-            <!-- 
-			<div class="map">
-			<iframe style="position:relative;z-index:999;" width="820" height="600" src="https://maps.google.com/maps?q=801 Atlantic Drive, Atlanta - 30332&t=&z=14&ie=UTF8&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a class="google-map-code" href="http://www.embedgooglemap.net" id="get-map-data">801 Atlantic Drive, Atlanta - 30332</a><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></iframe>
-			</div>
-             -->
-					<?php include("lib/footer.php"); ?>
-
         </div>
-    </body>
+        <?php include("lib/footer.php"); ?>
+        <?php include("lib/error.php"); ?>
+        <div class="clear"></div>
+    </div>
+<body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-// written by GTusername1
+// written by group071
 
 /* destroy session data */
 session_start();

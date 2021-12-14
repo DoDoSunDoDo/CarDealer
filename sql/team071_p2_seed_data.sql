@@ -40,10 +40,19 @@ VALUES ('User567');
 
 -- mimic veihcle related tables
 -- 2 tables below will be a fixed as required
-INSERT INTO Manufacturer
-VALUES (1, 'Acura'), (2, 'Alfa Romeo'), (3, 'Aston Martin'), (4, 'Audi'), (5, 'Bentley');
-INSERT INTO Color
-VALUES (1, 'Aluminum'), (2, 'Beige'), (3, 'Black'), (4, 'Blue');
+
+INSERT INTO Manufacturer (ManufacturerName) VALUES
+('Acura'),('Alfa Romeo'),('Aston Martin'), ('Audi'),('Bently'),('BMW'),('Buick'),('Cadillac'),
+('Chevrolet'),('Chrysler'),('Dodge'),('Ferrari'),('FIAT'),('Ford'),('Freightliner'),('Genesis'),
+('GMC'),('Honda'),('Hyundai'),('INFINITI'),('Jaguar'),('Jeep'),('Kia'),('Lamborghini'),('Land Rover'),
+('Lexus'),('Lincoln'),('Lotus'),('Maserati'),('MAZDA'),('Mclaren'),('Mercedes-Benz'),('MINI'),('Mitsubishi'),
+('Nissan'),('Porsche'),('Ram'),('Rolls-Royce'),('SAAB'),('smart'),('Subaru'),('Tesla'),('Toyota'),('Vauxhall'),
+('Volkswagen'),('Volvo');
+
+INSERT INTO Color (ColorDescription) VALUES
+('Aluminum'),('Beige'),('Black'),('Blue'),('Brown'),('Bronze'),('Claret'),('Copper'),('Cream'),
+('Gold'),('Gray'),('Green'),('Maroon'),('Metallic'),('Navy'),('Orange'),('Pink'),('Purple'),
+('Red'),('Rose'),('Rust'),('Silver'),('Tan'),('Turquoise'),('White'),('Yellow');
 
 INSERT INTO Vehicle (VIN, UserName, AdditionalInfo, InvoicePrice, ModelYear, ModelName,
 AddDate, VehicleType, ManufacturerID)
@@ -53,21 +62,29 @@ VALUES
     ('CDE1234', 'User567', '', 1000.34, 2020, 'Model3', DATE('2021-10-03'), 'Convertible', 2), 
     ('DEF1234', 'User567', '', 2000.34, 2020, 'Model4', DATE('2021-10-03'), 'SUV', 3), 
     ('EFG1', 'User123', '', 2000.00, 2021, 'Model1', DATE('2021-10-04'), 'Car', 1),
-    ('FG12', 'User123', '', 1500.00, 2000, 'Model5', DATE('2021-10-04'), 'Van', 4);
-    
+    ('FG12', 'User123', '', 1500.00, 2000, 'Model5', DATE('2021-10-04'), 'Van', 4),
+    ('ABC12345', 'User123', 'Car has two accidents', 1000.00, 2021, 'Model1', DATE('2021-09-30'), 'Car', 1),
+    ('BCD23455', 'User567', '', 3000.34, 2020, 'Model2', DATE('2021-10-02'), 'Truck', 2), 
+    ('CDE12345', 'User567', '', 1000.34, 2020, 'Model3', DATE('2021-10-03'), 'Convertible', 2), 
+    ('DEF12345', 'User567', '', 2000.34, 2020, 'Model4', DATE('2021-10-03'), 'SUV', 3), 
+    ('EFG15', 'User123', '', 2000.00, 2021, 'Model1', DATE('2021-10-04'), 'Car', 1),
+    ('FG125', 'User123', '', 1500.00, 2000, 'Model5', DATE('2021-10-04'), 'Van', 4);
+
 INSERT INTO Car (VIN, NumberofDoors)
 VALUES ('ABC1234', 2), ('EFG1', 2);
 INSERT INTO Truck (VIN, CargoCapacity, CargoCoverType, NumberOfRearAxis)
-VALUES ('BCD2345', '20.0', 'type1', 3);
+VALUES ('BCD2345', '20.0', 'type1', 3), ('BCD23455', '20.0', 'type1', 3);
 INSERT INTO Van (VIN, HasDriverSideBackDoor)
 VALUES ('FG12', 'yes');
 INSERT INTO SUV (VIN, DrivetrainType, NumberOfCupholders)
 VALUES ('DEF1234', 'type11', 2);
 INSERT INTO Convertible (VIN, RoofType, BackseatCount)
-VALUES ('CDE1234', 'type1', 0);
+VALUES ('CDE1234', 'type1', 0), ('CDE12345', 'type2', 2);
 
 INSERT INTO VehicleColor
-VALUES ('ABC1234', 1), ('ABC1234', 2), ('BCD2345', 1), ('CDE1234', 3), ('DEF1234', 4), ('EFG1', 4), ('EFG1', 1), ('FG12', 2);
+VALUES ('ABC1234', 1), ('ABC1234', 2), ('BCD2345', 1), ('CDE1234', 3), ('DEF1234', 4), ('EFG1', 4), ('EFG1', 1), ('FG12', 2),
+('ABC12345',5 ),('BCD23455',7 ),('CDE12345',3 ),('DEF12345',9 ),('EFG15',5 ),('FG125',5 );
+
 
 -- mimic sales related tables
 INSERT INTO SalesRecord (PurchaseDate, SoldPrice, VIN, CustomerID, UserName)
@@ -75,21 +92,28 @@ VALUES
 	(DATE('2021-10-01'), 1200.00, 'ABC1234', 2, 'User234'),
 	(DATE('2021-10-05'), 1300.00, 'DEF1234', 2, 'User567'),
 	(DATE('2021-10-05'), 1000.00, 'EFG1', 1, 'User567'),
-	(DATE('2021-10-05'), 2000.12, 'FG12', 3, 'User567');
-
+	(DATE('2021-10-05'), 2000.12, 'FG12', 3, 'User567'),
+	(DATE('2021-11-11'), 9200.00, 'ABC12345', 2, 'User234'),
+	(DATE('2021-11-12'), 9300.00, 'DEF12345', 2, 'User567'),
+	(DATE('2021-11-13'), 9000.00, 'EFG15', 1, 'User567'),
+    (DATE('2021-9-13'), 3600.00, 'BCD2345', 1, 'User567'),
+	(DATE('2021-11-14'), 9000.12, 'FG125', 3, 'User567');
 -- mimic repair related tables
 INSERT INTO RepairRecord (VIN, CustomerID, UserName, StartDate, CompleteDate, LaborCharge, RepairDescription, OdometerReading)
 VALUES 
 	('ABC1234', 2, 'User234', DATE('2021-10-02'), NULL, 200.12, 'Changed font breaker and screws', 80000),
 	('EFG1', 1, 'User567', DATE('2021-10-07'), DATE('2021-10-08'), 100.00, 'Changed back breaker and screws', 9),
-	('FG12', 3, 'User567', DATE('2021-10-10'), DATE('2021-10-13'), 1000.12, 'Changed wind shield', 70000);
-    
+	('FG12', 3, 'User567', DATE('2021-10-10'), DATE('2021-10-13'), 1000.12, 'Changed wind shield', 70000),
+	('DEF1234', 2, 'User567', DATE('2021-10-11'), DATE('2021-10-12'), 100.00, 'Changed back breaker and screws', 9),
+	('ABC12345', 2, 'User234', DATE('2021-10-15'), DATE('2021-10-16'), 1000.12, 'Changed wind shield', 70000),
+	('EFG15', 1, 'User567', DATE('2021-10-29'), DATE('2021-10-30'), 100.00, 'Changed back breaker and screws', 9),
+	('FG125', 3, 'User567', DATE('2021-10-26'), DATE('2021-10-27'), 1000.12, 'Changed wind shield', 70000);
 INSERT INTO Parts (PartNumber, RepairID, PartPrice, PartQuantity, PartVendor)
 VALUES
 	(1, 1, 10.0, 3, 'Vendor1'),
     (2, 1, 20.0, 1, 'Vendor2'),
     (3, 2, 12.0, 1, 'Vendor2'),
-    (1, 2, 20.0, 2, 'Vendor1'),
+    (1, 2, 10.0, 2, 'Vendor1'),
     (5, 2, 100.0, 1, 'Vendor3'),
     (6, 3, 520.0, 1, 'Vendor1');
 

@@ -1,0 +1,10 @@
+[28-Nov-2021 18:19:01 America/Los_Angeles] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\Bitnami\wampstack-8.0.12-0\apache2\htdocs\cs6400-2021-03-Team071\Phase 3\Jaunty_Jalopies\search_vehicle.php:28
+Stack trace:
+#0 C:\Bitnami\wampstack-8.0.12-0\apache2\htdocs\cs6400-2021-03-Team071\Phase 3\Jaunty_Jalopies\search_vehicle.php(28): mysqli_fetch_array()
+#1 {main}
+  thrown in C:\Bitnami\wampstack-8.0.12-0\apache2\htdocs\cs6400-2021-03-Team071\Phase 3\Jaunty_Jalopies\search_vehicle.php on line 28
+[28-Nov-2021 18:20:15 America/Los_Angeles] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\Bitnami\wampstack-8.0.12-0\apache2\htdocs\cs6400-2021-03-Team071\Phase 3\Jaunty_Jalopies\search_vehicle.php:28
+Stack trace:
+#0 C:\Bitnami\wampstack-8.0.12-0\apache2\htdocs\cs6400-2021-03-Team071\Phase 3\Jaunty_Jalopies\search_vehicle.php(28): mysqli_fetch_array()
+#1 {main}
+  thrown in C:\Bitnami\wampstack-8.0.12-0\apache2\htdocs\cs6400-2021-03-Team071\Phase 3\Jaunty_Jalopies\search_vehicle.php on line 28

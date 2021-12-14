@@ -1,0 +1,10 @@
+name: load_demo
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pandas=1.3.2
+  - python=3.9.7
+  - mysql-connector-python=8.0.25
+  - pip:
+      pymysql==1.0.2

@@ -22,7 +22,7 @@ padding: Top, Right, Bottom, Left;
 
 body
 {
-background:url(../img/bg.gif) repeat #000000;
+background:url(../img/bg.gif) repeat #000000; 
 padding:0; 
 font-family: Verdana, Geneva, sans-serif;
 font-size:12px;
@@ -67,9 +67,9 @@ li {
 
 a.fancy_button{
 display:block;
-width:68px;
-height:24px;
-line-height:24px;
+width:auto;
+height:auto;
+line-height:auto;
 text-align:center;
 color:#E9E5E2;
 float:right;
@@ -89,9 +89,10 @@ float:left;
 padding:3px 25px 3px 3px;
 }
 
+/* adapt to macbook pro 13 width */
 #main_container{
-width:820px;
-height:auto;
+width:1400px;
+height:1400px;
 margin:auto;
 padding:0px;
 }
@@ -242,7 +243,7 @@ padding:0px;
 }
 /*---------------center_content-------*/
 .center_content{
-width:820px;
+width:auto;
 height:auto;
 padding:10px 0px 10px 0px;
 clear:both;
@@ -274,13 +275,14 @@ width:400px;
 border-bottom:1px #CCCCCC dashed;
 padding:10px 10px 10px 10px;
 }
+
 /*-----------------------login_form-------------------*/
 
 .text_box{
-width:278px;
-height:149px;
+width:300px;
+height:300px;
 padding:10px 10px 10px 10px;
-background:url(../img/text_box.gif) no-repeat center;
+/* background:url(../img/text_box.gif) no-repeat center; */
 background-position:0px 0px;
 margin-left: auto;
 margin-right: auto;
@@ -342,3 +344,37 @@ color:#3071B9;
 color:#3071B9;
 font-weight:bold;
 }
+
+/*---------------table-------*/
+#table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+.right {
+    text-align: right;
+    float: right;
+  }
+  
+  #table td, #table th {
+    border: 1px solid rgba(61, 56, 56, 0.506);
+    padding: 8px;
+    text-align: center;
+    font-weight:bold;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  
+  #table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #table tr:hover {background-color: #ddd;}
+  
+  #table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #434044ce;
+    color: white;
+    font-size: 14px;
+  }

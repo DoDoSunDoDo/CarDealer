@@ -1,12 +1,12 @@
 -- CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
-CREATE USER IF NOT EXISTS 'root@localhost' IDENTIFIED BY '09250117';
+CREATE USER IF NOT EXISTS 'gatechUser@localhost' IDENTIFIED BY 'gatech123';
 
-DROP DATABASE IF EXISTS `cs6400_fa21_team071`; 
+DROP DATABASE IF EXISTS `cs6400_fa21_team071`;
 SET default_storage_engine=InnoDB;
 SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-CREATE DATABASE IF NOT EXISTS cs6400_fa21_team071 
-    DEFAULT CHARACTER SET utf8mb4 
+CREATE DATABASE IF NOT EXISTS cs6400_fa21_team071
+    DEFAULT CHARACTER SET utf8mb4
     DEFAULT COLLATE utf8mb4_unicode_ci;
 USE cs6400_fa21_team071;
 
@@ -61,17 +61,17 @@ CREATE TABLE Individual (
   DriverLicenceNum varchar(50) NOT NULL,
   FirstName varchar(50) NOT NULL,
   LastName varchar(50) NOT NULL,
-  PRIMARY KEY (DriverLicenceNum), 
+  PRIMARY KEY (DriverLicenceNum),
   KEY CustomerID (CustomerID)
 );
 CREATE TABLE Business (
   CustomerID int NOT NULL,
-  TaxID int NOT NULL,
+  TaxID varchar(50) NOT NULL,
   FirstName varchar(50) NOT NULL,
   LastName varchar(50) NOT NULL,
   BusinessName varchar(50) NOT NULL,
   PrimaryContactTitle varchar(50) NOT NULL,
-  PRIMARY KEY (TaxID), 
+  PRIMARY KEY (TaxID),
   KEY CustomerID (CustomerID)
 );
 
@@ -84,7 +84,6 @@ CREATE TABLE Vehicle (
   ModelName varchar(50) NOT NULL,
   AddDate date NOT NULL,
   ManufacturerID int NOT NULL,
-  VehicleType varchar(50) NOT NULL,
   PRIMARY KEY (VIN)
 );
 
@@ -167,7 +166,7 @@ CREATE TABLE RepairRecord (
 );
 
 CREATE TABLE Parts (
-  PartNumber int NOT NULL,
+  PartNumber varchar(50) NOT NULL,
   RepairID int NOT NULL,
   PartPrice float NOT NULL,
   PartQuantity int NOT NULL,
@@ -208,20 +207,20 @@ ALTER TABLE SUV
   ADD CONSTRAINT fk_SUV_VIN_Vehicle_VIN FOREIGN KEY (VIN) REFERENCES Vehicle (VIN);
 ALTER TABLE Convertible
   ADD CONSTRAINT fk_Convertible_VIN_Vehicle_VIN FOREIGN KEY (VIN) REFERENCES Vehicle (VIN);
-  
+
 ALTER TABLE VehicleColor
   ADD CONSTRAINT fk_VehicleColor_VIN_Vehicle_VIN FOREIGN KEY (VIN) REFERENCES Vehicle (VIN),
   ADD CONSTRAINT fk_VehicleColor_ColorID_Color_ColorID FOREIGN KEY (ColorID) REFERENCES Color (ColorID);
-  
+
 ALTER TABLE SalesRecord
   ADD CONSTRAINT fk_SalesRecord_VIN_Vehicle_VIN FOREIGN KEY (VIN) REFERENCES Vehicle (VIN),
   ADD CONSTRAINT fk_SalesRecord_CustomerID_Customer_CustomerID FOREIGN KEY (CustomerID) REFERENCES Customer (CustomerID),
   ADD CONSTRAINT fk_SalesRecord_UserName_User_UserName FOREIGN KEY (UserName) REFERENCES `User` (UserName);
-  
+
 ALTER TABLE RepairRecord
   ADD CONSTRAINT fk_RepairRecord_VIN_Vehicle_VIN FOREIGN KEY (VIN) REFERENCES Vehicle (VIN),
   ADD CONSTRAINT fk_RepairRecord_CustomerID_Customer_CustomerID FOREIGN KEY (CustomerID) REFERENCES Customer (CustomerID),
   ADD CONSTRAINT fk_RepairRecord_UserName_User_UserName FOREIGN KEY (UserName) REFERENCES `User` (UserName);
-  
+
 ALTER TABLE Parts
   ADD CONSTRAINT fk_Parts_RepairID_RepairRecord_RepairID FOREIGN KEY (RepairID) REFERENCES `RepairRecord` (RepairID);
