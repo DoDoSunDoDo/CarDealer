@@ -6,4 +6,4 @@
 4. Change your dir in terminal to ./Jaunty_Jalopies/demo_data and run `conda env update`. NOTE: if your host and port 
    setting in load_user_data.py is different from mine, you'll have to update these two manually (same as other *_data.py), 
    otherwise you can leave as it is
-5. Run `python load_all.py`. Now data should have been loaded to DB server in PhpMyAdmin
+5. Run `python load_all.py`. Now data should have been loaded to DB server in PhpMyAdminn
