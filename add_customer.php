@@ -4,6 +4,7 @@ if (!isset($_SESSION['username'])) {
 	header('Location: search_customer.php');
     exit();
 }
+
 ?>
 
 
